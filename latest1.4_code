@@ -79,25 +79,30 @@ def apply_update():
         with open(LOCAL_VERSION_FILE, "w") as f:
             f.write(new_version)
 
-        # Start a temporary script to rename and restart
+        # ✅ Create update script that:
+        # 1. Waits
+        # 2. Overwrites EXE using `copy /y`
+        # 3. Deletes update.exe and .bat file
+        # 4. Restarts the EXE
         update_script = f"""
         @echo off
-        timeout /t 2
-        del "{old_exe_path}"
-        rename "{new_exe_path}" "{OLD_EXE_NAME}"
+        timeout /t 2 >nul
+        copy /y "{NEW_EXE_NAME}" "{OLD_EXE_NAME}"
+        del "{NEW_EXE_NAME}"
         start "" "{OLD_EXE_NAME}"
-        exit
+        del "%~f0"
         """
-        
+
         # Save the script as a .bat file and run it
         bat_file = "update_script.bat"
         with open(bat_file, "w") as f:
             f.write(update_script)
 
         subprocess.Popen(bat_file, shell=True)
-        sys.exit()  # Close the old application to allow update
+        sys.exit()  # Close the old app to allow update
     else:
         messagebox.showerror("Update Error", "Update file not found! Please rename manually")
+
 
 def update_version_label():
     """Update the version label dynamically after update."""
@@ -1647,7 +1652,7 @@ update_btn.grid(row=12, column=0, pady=10, padx=10, sticky="ew")
 
 # Label to show current version
 current_version = tk.StringVar()
-current_version.set(f"Current Version: {get_current_version()}")
+current_version.set(f"current Version: {get_current_version()}")
 version_label = tk.Label(frame, textvariable=current_version, font=("Segoe UI", 10, "bold"))
 version_label.grid(row=13, column=0, columnspan=2, pady=5)
 
