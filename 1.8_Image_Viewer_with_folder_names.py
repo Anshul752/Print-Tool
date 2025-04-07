@@ -1714,4 +1714,5 @@ root.mainloop()
 # image Viewer with Print Option , fixed image resize to boxes. 
 # image editer also added. Image Quality Improved,select inverse fixed.
 # Github Auto update feature added
+# image viewer changed with Folder Option
 
