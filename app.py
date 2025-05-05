@@ -1,43 +1,49 @@
+# app.py  (Server)
+
 from flask import Flask, request, jsonify
 import json
 import os
 
 app = Flask(__name__)
-LICENSE_DB_FILE = "license_data.json"
+DATA_FILE = 'license_data.json'
+
+# Initialize file if not exists
+if not os.path.exists(DATA_FILE):
+    with open(DATA_FILE, 'w') as f:
+        json.dump({}, f)
 
 def load_license_data():
-    if not os.path.exists(LICENSE_DB_FILE):
-        with open(LICENSE_DB_FILE, "w") as f:
-            json.dump({}, f)
-    with open(LICENSE_DB_FILE, "r") as f:
+    with open(DATA_FILE, 'r') as f:
         return json.load(f)
 
 def save_license_data(data):
-    with open(LICENSE_DB_FILE, "w") as f:
+    with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=4)
 
-@app.route("/activate_license", methods=["POST"])
-def activate_license():
-    req_data = request.get_json()
-    license_key = req_data.get("license_key")
-    pc_id = req_data.get("pc_id")
+@app.route('/validate_key', methods=['POST'])
+def validate_key():
+    content = request.get_json()
+    license_key = content['key']
+    pc_id = content['pc_id']
 
     data = load_license_data()
-    if license_key not in data:
-        return jsonify({"status": "invalid"})
 
-    if data[license_key] == "":
+    if license_key not in data:
+        return jsonify({"status": "invalid", "message": "License key not found."})
+
+    if data[license_key] is None:
+        # Key available, bind it
         data[license_key] = pc_id
         save_license_data(data)
-        return jsonify({"status": "success"})
+        return jsonify({"status": "activated", "message": "License activated successfully."})
+
     elif data[license_key] == pc_id:
-        return jsonify({"status": "success"})
+        # Already activated on same PC
+        return jsonify({"status": "activated", "message": "License already activated on this PC."})
+
     else:
-        return jsonify({"status": "already_used"})
+        # Key bound to another PC
+        return jsonify({"status": "used_elsewhere", "message": "License key already used on another PC."})
 
-@app.route("/")
-def home():
-    return "License Server is running."
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
