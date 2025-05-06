@@ -1,5 +1,3 @@
-# app.py  (Server)
-
 from flask import Flask, request, jsonify
 import json
 import os
@@ -7,7 +5,7 @@ import os
 app = Flask(__name__)
 DATA_FILE = 'license_data.json'
 
-# Initialize file if not exists
+# Initialize license data file if not exists
 if not os.path.exists(DATA_FILE):
     with open(DATA_FILE, 'w') as f:
         json.dump({}, f)
@@ -20,11 +18,11 @@ def save_license_data(data):
     with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=4)
 
-@app.route('/validate_key', methods=['POST'])
+@app.route('/validate', methods=['POST'])   # NOTICE: /validate to match client
 def validate_key():
     content = request.get_json()
-    license_key = content['key']
-    pc_id = content['pc_id']
+    license_key = content.get('license_key')
+    pc_id = content.get('pc_id')
 
     data = load_license_data()
 
@@ -32,14 +30,14 @@ def validate_key():
         return jsonify({"status": "invalid", "message": "License key not found."})
 
     if data[license_key] is None:
-        # Key available, bind it
+        # Key available, bind it to PC
         data[license_key] = pc_id
         save_license_data(data)
-        return jsonify({"status": "activated", "message": "License activated successfully."})
+        return jsonify({"status": "success", "message": "License activated successfully."})
 
     elif data[license_key] == pc_id:
         # Already activated on same PC
-        return jsonify({"status": "activated", "message": "License already activated on this PC."})
+        return jsonify({"status": "success", "message": "License already activated on this PC."})
 
     else:
         # Key bound to another PC
