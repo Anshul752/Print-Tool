@@ -1,8 +1,11 @@
-# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Modern Admin Panel working,duplicate key removed )
+# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Modern Admin Panel working,duplicate key removed)
+# admin password
 
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for
 import json
 import threading
+from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 LOCK = threading.Lock()
@@ -125,8 +128,24 @@ def update_status():
         save_keys(keys_data)
 
     return jsonify({"status": "received"})
+    
+auth = HTTPBasicAuth()
+
+# Load username and password from config file
+with open('admin_auth.json') as f:
+    admin_creds = json.load(f)
+
+# Store hashed password (optional but safer)
+ADMIN_USERNAME = admin_creds["username"]
+ADMIN_PASSWORD_HASH = generate_password_hash(admin_creds["password"])
+
+@auth.verify_password
+def verify_password(username, password):
+    if username == ADMIN_USERNAME and check_password_hash(ADMIN_PASSWORD_HASH, password):
+        return username
 
 @app.route('/admin')
+@auth.login_required
 def admin_panel():
     with LOCK:
         data = load_keys()
