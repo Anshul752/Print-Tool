@@ -1,4 +1,4 @@
-# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Admin Panel)
+# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Admin Panel working)
 
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for
 import json
@@ -109,9 +109,6 @@ def update_status():
             if license_key in keys_data["keys"]:
                 keys_data["keys"][license_key]["used"] = True
                 keys_data["keys"][license_key]["pc_id"] = pc_id
-
-            # === Remove from trial_pc_ids ===
-            if pc_id in keys_data["trial_pc_ids"]:
 
         save_keys(keys_data)
 
