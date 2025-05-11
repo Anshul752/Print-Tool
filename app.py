@@ -1,4 +1,4 @@
-# app.py (FINAL VERSION) Trial,activation,block,validation of key,update status for trail and activation is working
+# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Admin Panel)
 
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for
 import json
@@ -71,14 +71,13 @@ def reset_check():
         reset_list = data.get("reset_required_pc_ids", [])
         is_reset_required = pc_id in reset_list
 
-        # If reset is required, remove the pc_id immediately
         if is_reset_required:
             reset_list.remove(pc_id)
             data["reset_required_pc_ids"] = reset_list
             save_keys(data)
 
     return jsonify({"reset_required": is_reset_required})
-    
+
 @app.route("/update_status", methods=["POST"])
 def update_status():
     data = request.get_json()
@@ -88,21 +87,36 @@ def update_status():
 
     with LOCK:
         keys_data = load_keys()
-        # Auto-add to trial_pc_ids if status is 'trial'
-        if status == "trial":
-            if pc_id not in keys_data.get("trial_pc_ids", []):
-                keys_data.setdefault("trial_pc_ids", []).append(pc_id)
-                save_keys(keys_data)
 
-        # Optionally, you can also clear from trial list if status is licensed (optional)
-        elif status == "licensed":
-            if pc_id in keys_data.get("trial_pc_ids", []):
-                keys_data['trial_pc_ids'].remove(pc_id)
-                save_keys(keys_data)
+        # Log the status first
+        print(f"[Server] Received license status: PC_ID={pc_id}, status={status}, key={license_key}")
+
+        keys_data.setdefault("trial_pc_ids", [])
+
+        if status.startswith("trial"):
+            # === Add to trial_pc_ids ===
+            if pc_id not in keys_data["trial_pc_ids"]:
+                keys_data["trial_pc_ids"].append(pc_id)
+
+            # === Remove license key activation if exists ===
+            for key, info in keys_data["keys"].items():
+                if info.get("pc_id") == pc_id:
+                    keys_data["keys"][key]["used"] = False
+                    keys_data["keys"][key]["pc_id"] = None
+
+        elif status == "licensed" and license_key:
+            # === Assign pc_id to license key ===
+            if license_key in keys_data["keys"]:
+                keys_data["keys"][license_key]["used"] = True
+                keys_data["keys"][license_key]["pc_id"] = pc_id
+
+            # === Remove from trial_pc_ids ===
+            if pc_id in keys_data["trial_pc_ids"]:
+
+        save_keys(keys_data)
 
     return jsonify({"status": "received"})
 
-  
 @app.route('/')
 def home():
     return "License Server Running ✅"
@@ -113,6 +127,7 @@ def admin_panel():
         data = load_keys()
         keys = data.get("keys", {})
         trial_pc_ids = data.get("trial_pc_ids", [])
+        licensed_pc_ids = data.get("licensed_pc_ids", {})
         reset_required_pc_ids = data.get("reset_required_pc_ids", [])
 
     html = '''
@@ -150,7 +165,7 @@ def admin_panel():
         <h3>🔐 License Keys</h3>
         <table border="1" cellpadding="5" id="keysTable">
           <tr>
-            <th>License Key</th><th>Used?</th><th>PC ID</th>
+            <th>License Key</th><th>Used?</th><th>✅ Licensed PC IDs</th>
           </tr>
           {% for key, info in keys.items() %}
           <tr>
@@ -172,15 +187,16 @@ def admin_panel():
         </table>
       </div>
 
-      <div>
-        <h3>🔄 Reset Required PC IDs</h3>
-        <table border="1" cellpadding="5" id="resetRequiredTable">
-          <tr><th>PC ID</th></tr>
-          {% for pc_id in reset_required_pc_ids %}
-          <tr><td>{{ pc_id }}</td></tr>
-          {% endfor %}
-        </table>
-      </div>
+
+       <div>
+         <h3>🔄 Reset Required PC IDs</h3>
+         <table border="1" cellpadding="5" id="resetRequiredTable">
+           <tr><th>PC ID</th></tr>
+           {% for pc_id in reset_required_pc_ids %}
+           <tr><td>{{ pc_id }}</td></tr>
+           {% endfor %}
+         </table>
+       </div>
 
     </div>
 
@@ -189,7 +205,7 @@ def admin_panel():
       let input = document.getElementById("searchBox");
       let filter = input.value.toUpperCase();
 
-      let tables = ["keysTable", "trialTable", "resetRequiredTable"];
+      let tables = ["keysTable", "trialTable", "licensedTable", "resetRequiredTable"];
       for (let t of tables) {
         let table = document.getElementById(t);
         let rows = table.getElementsByTagName("tr");
@@ -210,7 +226,7 @@ def admin_panel():
     </script>
     '''
 
-    return render_template_string(html, keys=keys, trial_pc_ids=trial_pc_ids, reset_required_pc_ids=reset_required_pc_ids)
+    return render_template_string(html, keys=keys, trial_pc_ids=trial_pc_ids, licensed_pc_ids=licensed_pc_ids, reset_required_pc_ids=reset_required_pc_ids)
 
 @app.route('/admin/reset', methods=['POST'])
 def admin_reset():
@@ -233,11 +249,6 @@ def admin_reset():
                     data['keys'][key]['pc_id'] = None
                     keys_updated = True
             if keys_updated:
-                save_keys(data)
-
-        elif action == "reset_required_remove":
-            if pc_id in data.get('reset_required_pc_ids', []):
-                data['reset_required_pc_ids'].remove(pc_id)
                 save_keys(data)
 
     return redirect(url_for('admin_panel'))
