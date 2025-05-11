@@ -1,4 +1,4 @@
-# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Admin Panel Test-new UI pannel)
+# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Admin Panel working)
 
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for
 import json
@@ -128,196 +128,76 @@ def admin_panel():
         reset_required_pc_ids = data.get("reset_required_pc_ids", [])
 
     html = '''
-<html>
-<head>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background-color: #f0f4f8;
-    color: #333;
-    padding: 30px;
-  }
+    <h2>🔑 License Keys and Trial PCs Overview (Admin Panel)</h2>
 
-  h2 {
-    color: #0a66c2;
-    margin-bottom: 20px;
-  }
+    <form action="/admin/reset" method="post">
+      <label><b>Enter PC ID to Reset:</b></label><br>
+      <input type="text" name="pc_id" required style="width:300px">
+      <br><br>
+      <button type="submit" name="action" value="reset_trial">🗑️ Reset Trial</button>
+      <button type="submit" name="action" value="reset_key">🗑️ Reset Key Activation</button>
+    </form>
 
-  form {
-    background: #ffffff;
-    padding: 15px 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-    max-width: 500px;
-  }
+    <br><br>
 
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
+    <form action="/admin/add_reset_required" method="post">
+      <label><b>Enter PC ID to Add to Reset Required:</b></label><br>
+      <input type="text" name="pc_id" required style="width:300px">
+      <br><br>
+      <div style="display:flex; gap:10px;">
+        <button type="submit" name="action" value="add_reset_required">➕ Add to Reset Required</button>
+        <button type="submit" name="action" value="remove_reset_required">➖ Remove from Reset Required</button>
+      </div>
+    </form>
 
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccd6dd;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-  }
+    <br><br>
 
-  button {
-    background-color: #0a66c2;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-size: 14px;
-  }
+    <input type="text" id="searchBox" onkeyup="filterTables()" placeholder="🔍 Search License Key or PC ID" style="width:400px; padding:5px">
 
-  button:hover {
-    background-color: #004e9a;
-  }
+    <br><br>
 
-  .button-group {
-    display: flex;
-    gap: 10px;
-  }
+    <div style="display:flex; gap:40px; flex-wrap:wrap;">
 
-  #searchBox {
-    width: 400px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccd6dd;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-  }
+      <div>
+        <h3>🔐 License Keys</h3>
+        <table border="1" cellpadding="5" id="keysTable">
+          <tr>
+            <th>License Key</th><th>Used?</th><th>✅ Licensed PC IDs</th>
+          </tr>
+          {% for key, info in keys.items() %}
+          <tr>
+            <td>{{ key }}</td>
+            <td>{{ 'Yes' if info['used'] else 'No' }}</td>
+            <td>{{ info['pc_id'] if info['pc_id'] else '-' }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
 
-  .tables-container {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
+      <div>
+        <h3>🖥️ Trial PC IDs</h3>
+        <table border="1" cellpadding="5" id="trialTable">
+          <tr><th>Trial PC ID</th></tr>
+          {% for pc_id in trial_pc_ids %}
+          <tr><td>{{ pc_id }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
 
-  .table-card {
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    flex: 1 1 300px;
-    min-width: 280px;
-  }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
+       <div>
+         <h3>🔄 Reset Required PC IDs</h3>
+         <table border="1" cellpadding="5" id="resetRequiredTable">
+           <tr><th>PC ID</th></tr>
+           {% for pc_id in reset_required_pc_ids %}
+           <tr><td>{{ pc_id }}</td></tr>
+           {% endfor %}
+         </table>
+       </div>
 
-  th, td {
-    padding: 8px 10px;
-    border-bottom: 1px solid #e0e6ed;
-    text-align: left;
-    font-size: 14px;
-  }
+    </div>
 
-  th {
-    background-color: #f5f7fa;
-    font-weight: 600;
-  }
-
-  tr:hover {
-    background-color: #f0f8ff;
-  }
-</style>
-</head>
-<body>
-
-<h2>🔑 License Keys and Trial PCs Overview (Admin Panel)</h2>
-
-<form action="/admin/reset" method="post">
-  <label>Enter PC ID to Reset:</label>
-  <input type="text" name="pc_id" required>
-  <div class="button-group">
-    <button type="submit" name="action" value="reset_trial">🗑️ Reset Trial</button>
-    <button type="submit" name="action" value="reset_key">🗑️ Reset Key Activation</button>
-  </div>
-</form>
-
-<form action="/admin/add_reset_required" method="post">
-  <label>Enter PC ID to Add to Reset Required:</label>
-  <input type="text" name="pc_id" required>
-  <div class="button-group">
-    <button type="submit" name="action" value="add_reset_required">➕ Add to Reset Required</button>
-    <button type="submit" name="action" value="remove_reset_required">➖ Remove from Reset Required</button>
-  </div>
-</form>
-
-<input type="text" id="searchBox" onkeyup="filterTables()" placeholder="🔍 Search License Key or PC ID">
-
-<div class="tables-container">
-
-  <div class="table-card">
-    <h3>🔐 License Keys</h3>
-    <table id="keysTable">
-      <tr>
-        <th>License Key</th><th>Used?</th><th>✅ Licensed PC IDs</th>
-      </tr>
-      {% for key, info in keys.items() %}
-      <tr>
-        <td>{{ key }}</td>
-        <td>{{ 'Yes' if info['used'] else 'No' }}</td>
-        <td>{{ info['pc_id'] if info['pc_id'] else '-' }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </div>
-
-  <div class="table-card">
-    <h3>🖥️ Trial PC IDs</h3>
-    <table id="trialTable">
-      <tr><th>Trial PC ID</th></tr>
-      {% for pc_id in trial_pc_ids %}
-      <tr><td>{{ pc_id }}</td></tr>
-      {% endfor %}
-    </table>
-  </div>
-
-  <div class="table-card">
-    <h3>🔄 Reset Required PC IDs</h3>
-    <table id="resetRequiredTable">
-      <tr><th>PC ID</th></tr>
-      {% for pc_id in reset_required_pc_ids %}
-      <tr><td>{{ pc_id }}</td></tr>
-      {% endfor %}
-    </table>
-  </div>
-
-</div>
-
-<script>
-// Dummy search filter (you can replace with real logic)
-function filterTables() {
-  const input = document.getElementById('searchBox');
-  const filter = input.value.toLowerCase();
-  const tables = ['keysTable', 'trialTable', 'resetRequiredTable'];
-  tables.forEach(tableId => {
-    const table = document.getElementById(tableId);
-    const tr = table.getElementsByTagName('tr');
-    for (let i = 1; i < tr.length; i++) {
-      const rowText = tr[i].textContent.toLowerCase();
-      tr[i].style.display = rowText.includes(filter) ? '' : 'none';
-    }
-  });
-}
-</script>
-
-</body>
-</html>
-
+    <script>
     function filterTables() {
       let input = document.getElementById("searchBox");
       let filter = input.value.toUpperCase();
