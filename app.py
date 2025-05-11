@@ -86,10 +86,17 @@ def update_status():
     status = data.get("status")
     license_key = data.get("license_key")
 
-    # Process or save status in DB...
     print(f"[Server] Received license status: PC_ID={pc_id}, status={status}, key={license_key}")
 
-    return jsonify({"status": "received"})   
+    with LOCK:
+        keys_data = load_keys()
+        if license_key in keys_data["keys"]:
+            keys_data["keys"][license_key]["used"] = (status == "licensed")
+            keys_data["keys"][license_key]["pc_id"] = pc_id if status == "licensed" else None
+            save_keys(keys_data)
+
+    return jsonify({"status": "received"})
+  
 @app.route('/')
 def home():
     return "License Server Running ✅"
