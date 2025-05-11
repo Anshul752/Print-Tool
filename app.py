@@ -1,4 +1,4 @@
-# app.py (FINAL VERSION) Trial,activation,block,validation of key is working
+# app.py (FINAL VERSION) Trial,activation,block,validation of key,update status for trail and activation is working
 
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for
 import json
@@ -86,16 +86,22 @@ def update_status():
     status = data.get("status")
     license_key = data.get("license_key")
 
-    print(f"[Server] Received license status: PC_ID={pc_id}, status={status}, key={license_key}")
-
     with LOCK:
         keys_data = load_keys()
-        if license_key in keys_data["keys"]:
-            keys_data["keys"][license_key]["used"] = (status == "licensed")
-            keys_data["keys"][license_key]["pc_id"] = pc_id if status == "licensed" else None
-            save_keys(keys_data)
+        # Auto-add to trial_pc_ids if status is 'trial'
+        if status == "trial":
+            if pc_id not in keys_data.get("trial_pc_ids", []):
+                keys_data.setdefault("trial_pc_ids", []).append(pc_id)
+                save_keys(keys_data)
+
+        # Optionally, you can also clear from trial list if status is licensed (optional)
+        elif status == "licensed":
+            if pc_id in keys_data.get("trial_pc_ids", []):
+                keys_data['trial_pc_ids'].remove(pc_id)
+                save_keys(keys_data)
 
     return jsonify({"status": "received"})
+
   
 @app.route('/')
 def home():
