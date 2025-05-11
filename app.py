@@ -1,4 +1,4 @@
-# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Modern Admin Panel working )
+# app.py (FINAL VERSION with Licensed PC IDs in Trial+activation auto update Modern Admin Panel working,duplicate key removed )
 
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for
 import json
@@ -16,6 +16,10 @@ def load_keys():
 def save_keys(data):
     with open(KEYS_FILE, "w") as f:
         json.dump(data, f, indent=2)
+        
+@app.route('/')
+def health_check():
+    return "✅ Service is running", 200
 
 @app.route('/validate', methods=['POST'])
 def validate_key():
@@ -36,8 +40,16 @@ def validate_key():
             else:
                 return jsonify({"status": "already_used"})
         else:
+            # === Auto-remove any old key linked to this PC ===
+            for other_key, other_record in data["keys"].items():
+                if other_record["pc_id"] == pc_id and other_key != key:
+                    other_record["used"] = False
+                    other_record["pc_id"] = "-"
+
+            # === Activate current key ===
             record["used"] = True
             record["pc_id"] = pc_id
+
             save_keys(data)
             return jsonify({"status": "success"})
 
