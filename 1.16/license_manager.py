@@ -118,6 +118,7 @@ def activate_license(key):
                 "activated_on": datetime.now().strftime("%Y-%m-%d"),
                 "blocked": False
             }
+            LICENSE_FILE = get_internal_file_path("license_info.json")
             save_license_info(info)
             return True
         else:
@@ -159,6 +160,8 @@ def start_trial():
         "pc_id": pc_id,
         "status": "trial",
         "blocked": False}
+    
+    TRIAL_MARKER_FILE = get_internal_file_path(".trial_used")
     save_license_info(info)
     with open(TRIAL_MARKER_FILE, "w") as f:
         f.write("trial_started")
