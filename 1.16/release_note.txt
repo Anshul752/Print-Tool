@@ -1,0 +1,22 @@
+1.16 version has PROD server linked with "https://id-print-tool.onrender.com/" 
+it has theses many feature as of now 
+
+🔑 License Keys and Trial PCs Overview (Admin Panel)
+Enter PC ID to Reset:
+🗑️ Reset Trial
+🗑️ Reset Key Activation
+Enter PC ID to Add to Reset Required:
+➕ Add to Reset Required
+➖ Remove from Reset Required
+🔍 Search License Key or PC ID
+🔐 License Keys
+Filter by Used Status:
+Used
+Unused
+All
+
+License Key	Used?	✅ Licensed PC IDs
+🖥️ Trial PC IDs
+Trial PC ID
+🔄 Reset Required PC IDs
+PC ID
