@@ -57,7 +57,7 @@ def get_current_version():
     if os.path.exists(LOCAL_VERSION_FILE):
         with open(LOCAL_VERSION_FILE, "r") as f:
             return f.read().strip()
-    return "1.0"
+    return "1.16"
 
 def download_zip_with_progress(progress_callback):
     try:
