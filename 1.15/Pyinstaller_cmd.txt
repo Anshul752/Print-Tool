@@ -1,8 +1,0 @@
-pyinstaller --noconsole --onedir --icon=id_card_icon.ico --add-data "id_card_icon.ico;." --add-data "version.txt;." ID_Print_tool.py
-
-
-1.generate_keys - It generates key of 16 digit
-2.license_keys - copy generated key and paste inside this 
-3 license_manager - keep track of trail and valid license every startup of .exe
-4 ID_Print_tool- it is window to activate trail/license version then start main.exe
-5. 1.15_license_manager_system_added_with_3_days_trial - main code of exe 
