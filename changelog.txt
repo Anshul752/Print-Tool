@@ -1,6 +1,7 @@
 🆕 What's New:
-• Improved UI and minor bug fixes
-• Rename and Delete card Fixed
-• Better stability in printing
-• Join WhatsApp Group option added in Setting
-• Contact us option added in Setting
+• Improved UI and minor bug fixes.
+• Rename and Delete card Fixed.
+• Better stability in printing.
+• Join WhatsApp Group option added in Setting.
+• Contact us option added in Setting.
+• Contact us option added on main UI.
