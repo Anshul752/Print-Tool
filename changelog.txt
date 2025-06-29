@@ -1,8 +1,8 @@
 Version 1.21
 
 🆕 What's New:
-• Improved UI and minor bug fixes.
-• Rename and Delete card Fixed.
-• Better stability in printing.
-• Contact us & Join WhatsApp Group option added in Setting.
-• Contact us option added on Home Screen.
+• Improved UI and minor bug fixes
+• Rename and delete card issues fixed
+• New paper type: 4x6 Half Size added
+• PVC card print updated
+• PVC card print now supports both landscape and portrait orientation
