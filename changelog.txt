@@ -1,8 +1,13 @@
-Version 1.21
+Version 1.22
 
-🆕 What's New:
-• Improved UI and minor bug fixes
-• Rename and delete card issues fixed
-• New paper type: 4x6 Half Size added
-• PVC card print updated
-• PVC card print now supports both landscape and portrait orientation
+🆕 What's New: • Dynamic preview and print scaling from 110% to 90%
+• Custom size preview and print with rotation support
+• Add and remove border option added
+• Terms & Conditions and Disclaimer shown on startup
+• Portrait image support added for PVC cards
+• Multi-page support in ID card cropping
+• Increased ID card limit Now support up to 40 cards
+• New PDF Tools: Merge and Split PDF
+
+🛠️ Issues Fixed: • Trial reset issue on multiple systems after reboot resolved
+• PVC card images now correctly saved to Desktop
