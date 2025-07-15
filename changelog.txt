@@ -1,4 +1,4 @@
-Version 1.22
+Version 1.23
 
 🆕 What's New: • Dynamic preview and print scaling from 110% to 90%
 • Custom size preview and print with rotation support
