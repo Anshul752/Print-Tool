@@ -1,13 +1,17 @@
-Version 1.23
+## 📦 Version 1.24 — July 2025
 
-🆕 What's New: • Dynamic preview and print scaling from 110% to 90%
-• Custom size preview and print with rotation support
-• Add and remove border option added
-• Terms & Conditions and Disclaimer shown on startup
-• Portrait image support added for PVC cards
-• Multi-page support in ID card cropping
-• Increased ID card limit Now support up to 40 cards
-• New PDF Tools: Merge and Split PDF
+### 🚀 What's New
+- 📱 Added **Mobile Number support** in Aadhaar Card layout
+- ✍️ Introduced **Signature placement** for PAN Card
+- 🖼️ New **4x6 Multi-Card layout mode** (Front-Front & Back-Back dual canvas)
+- 📐 Enhanced **image quality & sharpening** across PVC, 4x6, and A4 sizes
+- 💳 Added **Soft PVC Card Mode** with 1011x638px preview and auto-placement
+- 🔄 **PDF Rotate option** added for portrait printing of scanned documents
+- 📠 **Direct scanner support** added with automatic PDF merge
+- 💾 License & Trial **backup ZIP auto-saved to Desktop** on activation
 
-🛠️ Issues Fixed: • Trial reset issue on multiple systems after reboot resolved
-• PVC card images now correctly saved to Desktop
+### 🛠️ Fixes
+- 🟢 Resolved **image blur issue** in PVC card output
+- 📏 Improved **multi-layout preview scaling** for smaller screens
+- ⛔ Fixed **trial reset issue** after system reboot (cross-platform)
+
