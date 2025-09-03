@@ -1,19 +1,16 @@
-## 📦 Version 1.25— September 2025
+## 📦 Version 1.24.1— July 2025
 
 ### 🚀 What's New
+- 📱 Added **Mobile Number support** in Aadhaar Card layout
+- ✍️ Introduced **Signature placement** for PAN Card
+- 🖼️ New **4x6 Multi-Card layout mode** (Front-Front & Back-Back dual canvas)
+- 📐 Enhanced **image quality & sharpening** across PVC, 4x6, and A4 sizes
+- 💳 Added **Soft PVC Card Mode** with 1011x638px preview and auto-placement
+- 🔄 **PDF Rotate option** added for portrait printing of scanned documents
+- 📠 **Direct scanner support** added with automatic PDF merge
+- 💾 License & Trial **backup ZIP auto-saved to Desktop** on activation
 
-✨ New Features & Improvements
-
-Colour Aadhaar Card support
-
-Auto-update mobile number in Aadhaar Card
-
-Auto colour image enhancement in Edit Image option
-
-Auto-unlock PDF using file name
-
-Crop & Print option with box crop
-
-New Multi-Mode with crop & print option
-
-High DPI mode for better Display quality
+### 🛠️ Fixes
+- 🟢 Resolved **image blur issue** in PVC card output
+- 📏 Improved **multi-layout preview scaling** for smaller screens
+- ⛔ Fixed **trial reset issue** after system reboot (cross-platform)
