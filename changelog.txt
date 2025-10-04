@@ -1,13 +1,14 @@
-## 📦 Version 1.25— September 2025
-
-### 🚀 What's New
-
+📦 Version 1.26 — October 2025
 ✨ New Features & Improvements
 
-Colour Aadhaar Card support
-Auto-update mobile number in Aadhaar Card
-Auto colour image enhancement in Edit Image option
-Auto-unlock PDF using file name
-Crop & Print option with box crop
-New Multi-Mode with crop & print option
-High DPI mode for better Display quality
+• License Validity display added
+• Official Website link added in Contact Us
+• Multi-Mode Scale Option for flexible resizing
+• 4x6 Double-Side Print support
+• Epson Soft PVC Card Print support
+• Canon Soft PVC Card Print support
+• Epson L805 PVC Card Print support
+• Epson L8050 PVC Card Print support
+
+🛠️ Fixes
+• Improved Edit Image handling on smaller screens
