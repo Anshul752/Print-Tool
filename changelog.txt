@@ -10,5 +10,4 @@
  — Bold / Normal Font
  — Mobile Number Auto-Update
 • Auto Delete Saved Images (1–15 days cleanup)
-• Auto Backup & Restore for User Print Settings
 • New Look for ID Card Names (UI enhancement)
