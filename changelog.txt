@@ -1,14 +1,14 @@
-📦 Version 1.26 — October 2025
-✨ New Features & Improvements
+📦 Version 1.27 — November 2025
 
-• License Validity display added
-• Official Website link added in Contact Us
-• Multi-Mode Scale Option for flexible resizing
-• 4x6 Double-Side Print support
-• Epson Soft PVC Card Print support
-• Canon Soft PVC Card Print support
-• Epson L805 PVC Card Print support
-• Epson L8050 PVC Card Print support
+🚀 Major New Features
 
-🛠️ Fixes
-• Improved Edit Image handling on smaller screens
+• Dual PVC Slot Support for Epson L8050 Printer
+• Delete Card Option added in Multi-Card Mode
+• Zoom Text Feature added in Edit Image section
+• Aadhar Card Font Setting
+ — Adjustable Font Size
+ — Bold / Normal Font
+ — Mobile Number Auto-Update
+• Auto Delete Saved Images (1–15 days cleanup)
+• Auto Backup & Restore for User Print Settings
+• New Look for ID Card Names (UI enhancement)
