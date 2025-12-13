@@ -1,13 +1,14 @@
-📦 Version 1.27 — November 2025
+🆕 Version 1.27.3 — Stability & Fixes Update
+December 2025
+🛠️ Bug Fixes & Improvements
+Aadhaar Data Correction
+Improved accuracy and stability
+Epson Soft PVC – New Print Option
+Better compatibility & output
+Dual-Side NTR Print Fix
+Alignment and print reliability improved
 
-🚀 Major New Features
-
-• Dual PVC Slot Support for Epson L8050 Printer
-• Delete Card Option added in Multi-Card Mode
-• Zoom Text Feature added in Edit Image section
-• Aadhar Card Font Setting
- — Adjustable Font Size
- — Bold / Normal Font
- — Mobile Number Auto-Update
-• Auto Delete Saved Images (1–15 days cleanup)
-• New Look for ID Card Names (UI enhancement)
+General Improvements
+Performance optimization
+Bug fixes
+Overall software stability enhancements
