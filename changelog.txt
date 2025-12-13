@@ -1,7 +1,6 @@
 🆕 Version 1.27.3 — Stability & Fixes Update
 December 2025
 🛠️ Bug Fixes & Improvements
-Aadhaar Data Correction
 Improved accuracy and stability
 Epson Soft PVC – New Print Option
 Better compatibility & output
