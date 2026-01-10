@@ -1,13 +1,14 @@
-🆕 Version 1.27.3 — Stability & Fixes Update
-December 2025
-🛠️ Bug Fixes & Improvements
-Improved accuracy and stability
-Epson Soft PVC – New Print Option
-Better compatibility & output
-Dual-Side NTR Print Fix
-Alignment and print reliability improved
+🆕 Version 1.28 — Major Features + Fixes Update
+📅 January 2026
 
-General Improvements
-Performance optimization
-Bug fixes
-Overall software stability enhancements
+✨ New Features
+Deactivate Licence Key (PC ID send karne ki zarurat nahi)
+Long Aadhaar Print Support
+Long Aadhaar Print on A4 NTR Sheet (Post Office style)
+10 ID Cards Print on A4 NTR Sheet (Bulk printing support)
+Passport Photo Creator (A4 / 4×6 paper, 3/8/12 photo layouts)
+
+🛠️ Bug Fixes & Improvements
+Epson Soft PVC Card — New Print option added (size issue fixed)
+4×6 NTR Sheet — New Print option added (size issue fixed)
+Edit Image — Brightness & Contrast issue fixed (colour distortion removed)
