@@ -1,14 +1,20 @@
-🆕 Version 1.28 — Major Features + Fixes Update
-📅 January 2026
+🆕 **Version 1.29 — February Month Major Update**
+📅 February 2026
 
-✨ New Features
-Deactivate Licence Key (PC ID send karne ki zarurat nahi)
-Long Aadhaar Print Support
-Long Aadhaar Print on A4 NTR Sheet (Post Office style)
-10 ID Cards Print on A4 NTR Sheet (Bulk printing support)
-Passport Photo Creator (A4 / 4×6 paper, 3/8/12 photo layouts)
+✨ **New Features**
+Colour Aadhaar Hologram & Photo Border Option
+Multi-Page PDF Crop & Print Support
+New Crop System And Update Crop Data
+Multi Mode Sheet Printing (Multiple ID cards in one sheet)
+Auto Image Enhance (Automatic Brightness & Colour Fix)
+Students & Employees ID Card — One Click Direct Process
+Document Enhance (WhatsApp document clear print + shadow remove)
+Bandkam ID Card Support (Colour format from original PDF)
+Passport Photo Module — AI Background Remove + New Editing Tools
 
-🛠️ Bug Fixes & Improvements
-Epson Soft PVC Card — New Print option added (size issue fixed)
-4×6 NTR Sheet — New Print option added (size issue fixed)
-Edit Image — Brightness & Contrast issue fixed (colour distortion removed)
+🛠️ **Fixes & Improvements**
+Aadhaar Date of Birth Year Format Fix (1992/1980/2002 issue solved)
+C/O, W/O, D/O Address Format Corrected
+Print Alignment & Crop Accuracy Improved
+Image Processing Speed Optimized
+General Stability & Performance Improvements
