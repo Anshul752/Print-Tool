@@ -6,6 +6,7 @@ Toggle Aadhaar Disclaimer (Show / Hide)
 Smart Face Detection in Image Editor (Auto Face Selection)
 Enhanced Aadhaar Print Quality & Text Readability
 Automatic Aadhaar Mode Detection (Dual / English)
+Multi-Card Print Support in Document Enhance
 
 🛠️ **Fixes & Improvements**
 Improved Overall Stability
