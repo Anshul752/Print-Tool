@@ -7,6 +7,7 @@ Smart Face Detection in Image Editor (Auto Face Selection)
 Enhanced Aadhaar Print Quality & Text Readability
 Automatic Aadhaar Mode Detection (Dual / English)
 Multi-Card Print Support in Document Enhance
+1 Month Plan Direct Payment From Software 
 
 🛠️ **Fixes & Improvements**
 Improved Overall Stability
