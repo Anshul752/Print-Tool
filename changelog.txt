@@ -1,20 +1,14 @@
-🆕 **Version 1.29 — February Month Major Update**
-📅 February 2026
+🆕 **Version 1.29.2 — March Update**
+📅 March 2026
 
 ✨ **New Features**
-Colour Aadhaar Hologram & Photo Border Option
-Multi-Page PDF Crop & Print Support
-New Crop System And Update Crop Data
-Multi Mode Sheet Printing (Multiple ID cards in one sheet)
-Auto Image Enhance (Automatic Brightness & Colour Fix)
-Students & Employees ID Card — One Click Direct Process
-Document Enhance (WhatsApp document clear print + shadow remove)
-Bandkam ID Card Support (Colour format from original PDF)
-Passport Photo Module — AI Background Remove + New Editing Tools
+Toggle Aadhaar Disclaimer (Show / Hide)
+Smart Face Detection in Image Editor (Auto Face Selection)
+Enhanced Aadhaar Print Quality & Text Readability
+Automatic Aadhaar Mode Detection (Dual / English)
 
 🛠️ **Fixes & Improvements**
-Aadhaar Date of Birth Year Format Fix (1992/1980/2002 issue solved)
-C/O, W/O, D/O Address Format Corrected
-Print Alignment & Crop Accuracy Improved
-Image Processing Speed Optimized
-General Stability & Performance Improvements
+Improved Overall Stability
+Optimized Print Performance & Alignment
+Faster Image Processing
+Various Minor Fixes & Enhancements
