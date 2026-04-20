@@ -1,16 +1,10 @@
-🆕 **Version 1.29.2 — March Update**
-📅 March 2026
+🚀 April Update – Version 1.30
 
-✨ **New Features**
-Toggle Aadhaar Disclaimer (Show / Hide)
-Smart Face Detection in Image Editor (Auto Face Selection)
-Enhanced Aadhaar Print Quality & Text Readability
-Automatic Aadhaar Mode Detection (Dual / English)
-Multi-Card Print Support in Document Enhance
-1 Month Plan Direct Payment From Software 
-
-🛠️ **Fixes & Improvements**
-Improved Overall Stability
-Optimized Print Performance & Alignment
-Faster Image Processing
-Various Minor Fixes & Enhancements
+✨ New Features
+• Aadhar Multiple Language Support
+• Manual PAN Entry
+• Farmer ID Module
+• Bihar Labour Card (BOCW) Support
+• Colour Aadhar Design
+• Document Enhance (Multi ID Print)
+• PVC Card Printer Support
