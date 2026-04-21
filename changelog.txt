@@ -1,10 +1,10 @@
-🚀 April Update – Version 1.30
+April Update - Version 1.30
 
-✨ New Features
-• Aadhar Multiple Language Support
-• Manual PAN Entry
-• Farmer ID Module
-• Bihar Labour Card (BOCW) Support
-• Colour Aadhar Design
-• Document Enhance (Multi ID Print)
-• PVC Card Printer Support
+New Features
+- Aadhar Multiple Language Support
+- Manual PAN Entry
+- Farmer ID Module
+- Bihar Labour Card (BOCW) Support
+- Colour Aadhar Design
+- Document Enhance (Multi ID Print)
+- PVC Card Printer Support
