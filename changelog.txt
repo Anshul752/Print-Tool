@@ -1,10 +1,13 @@
-April Update - Version 1.30
+May Update - Version 1.31
 
 New Features
-- Aadhar Multiple Language Support
-- Manual PAN Entry
-- Farmer ID Module
-- Bihar Labour Card (BOCW) Support
-- Colour Aadhar Design
-- Document Enhance (Multi ID Print)
-- PVC Card Printer Support
+
+* Manual NSDL / UTI PAN Support
+* 2 New AI Background Remove Models
+* 4x6 Full Photo Layout
+* Batch Mode Printing
+* Farmer ID Font Settings & 5 Designs
+* Photo Border Support in All Cards
+* Document Enhance PDF Builder
+* 50+ CSC Tools
+* New Software Themes
