@@ -1,13 +1,9 @@
-May Update - Version 1.31
+June 2026 Update – Version 1.31.1
 
 New Features
+• Manual DL Support
 
-* Manual NSDL / UTI PAN Support
-* 2 New AI Background Remove Models
-* 4x6 Full Photo Layout
-* Batch Mode Printing
-* Farmer ID Font Settings & 5 Designs
-* Photo Border Support in All Cards
-* Document Enhance PDF Builder
-* 50+ CSC Tools
-* New Software Themes
+Improvements
+• Aadhaar Font Optimization
+• Faster Software Startup
+• Improved System Tray Handling
