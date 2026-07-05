@@ -1,9 +1,11 @@
-June 2026 Update – Version 1.31.1
+**July 2026 Update – Version 1.32**
 
-New Features
-• Manual DL Support
+**New Features**
+• Show License Key
+• Manage Card Order
+• Direct Copy & Paste Support
 
-Improvements
-• Aadhaar Font Optimization
-• Faster Software Startup
-• Improved System Tray Handling
+**Improvements**
+• Multi-Page PDF Support
+• Manual DL Improvements
+• Farmer ID Improvements
