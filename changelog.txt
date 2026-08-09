@@ -1,11 +1,13 @@
-**July 2026 Update – Version 1.32**
+### **August 2026 Update – Version 1.33**
 
 **New Features**
-• Show License Key
-• Manage Card Order
-• Direct Copy & Paste Support
+• Voter ID Hologram
+• Custom Card Module
+• PVC Card Cover
+• Passport Photo – Custom Crop & Auto Face Align
+• Scanner – Delete & Move Pages
 
 **Improvements**
-• Multi-Page PDF Support
-• Manual DL Improvements
-• Farmer ID Improvements
+• Farmer ID – Land Record Table Data Fix & Front/Back QR
+• Faster Software Startup
+• New A4 & 4×6 Dash Border Design
