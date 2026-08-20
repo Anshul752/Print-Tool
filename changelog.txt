@@ -1,4 +1,4 @@
-### **August 2026 Update – Version 1.33**
+### **August 2026 Update – Version 1.33.1**
 
 **New Features**
 • Voter ID Hologram
