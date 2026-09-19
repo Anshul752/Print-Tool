@@ -1,13 +1,17 @@
-### **August 2026 Update – Version 1.33.1**
+### **September 2026 Update – Version 1.34**
 
 **New Features**
-• Voter ID Hologram
-• Custom Card Module
-• PVC Card Cover
-• Passport Photo – Custom Crop & Auto Face Align
-• Scanner – Delete & Move Pages
+• Farmer ID – New A4 PDF
+• Epson L8050 – Batch Mode Print
+• Signature Background Removal
+• Passport Photo – Stamp Size & Visa Size
+• TN Ration Card – PVC Size
+• Telangana Ration Card – PVC Size
+• Document Enhance – Add Text, Multiple Image Selection & Scanner Import
+• Watermark Feature
 
-**Improvements**
-• Farmer ID – Land Record Table Data Fix & Front/Back QR
+**Improvements & Issue Fixes**
 • Faster Software Startup
-• New A4 & 4×6 Dash Border Design
+• Faster Aadhaar Generate Process
+• Masked Aadhaar Working
+• Aadhaar Back Side Number Cut Issue Fixed
