@@ -1,12 +1,9 @@
-### **October 2026 Update – Version 1.35**
+### **November 2026 Update – Version 1.35.1**
 
-**New Features**
-• QR2 Direct Print – Receive Print Orders via QR Code
-• Join Passport Photo – Combine Two Persons' Photos
-• Aadhaar Disclaimer – Hide, Original, Small & English Only
-• Farmer ID – 2 New Designs (Design 7 & 8)
+New Features
+• Quick Print (Now with major updates):
+– Razorpay online payment added
+– Direct UPI payment added
+– Both online and offline payment options supported
+– Duplex printer support added
 
-**Improvements & Issue Fixes**
-• Ayushman Card – QR Code Size Issue Fixed
-• Farmer ID – QR Code Position & Size Adjustment
-• Additional Performance & Stability Improvements
